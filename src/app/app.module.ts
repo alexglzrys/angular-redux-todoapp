@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { TodosModule } from './todos/todos.module';
 import { FooterComponent } from './footer/footer.component';
 
+// NgRx
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './todos/todo.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +16,9 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    TodosModule
+    TodosModule,
+    // Especificar los estados y sus respectivos reducers
+    StoreModule.forRoot({todos: todoReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
