@@ -16,6 +16,7 @@ docs
 ```
 - Mover **/docs** a la raíz del proyecto
 - Eliminar el directorio **/dist**
+- Comentar el tag **<base />** del archivo html en docs
 - Generar un **commit de los nuevos cambios** en el proyecto y hacer push al repo
 ```
 git commit -m "Docs generado"
@@ -28,6 +29,5 @@ Source: Deploy from branch
 Branch: main | /docs
 Esperar 10 minutos y recargar página hasta que nos aparezca la URL del proyecto alojado
 ```
-- Comentar el tag **<base />** del archivo html en docs
-- Hacer commit y push
+
 
