@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Todo } from '../models/todo.model';
+import { AppSate } from '../../app.reducer';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  constructor() { }
+  todos: Todo[] = [];
+
+  constructor(private store: Store<AppSate>) { }
 
   ngOnInit(): void {
+    // Cada vez que suceda un cambio, la suscripción nos avisará actualizando el listado de todos
+    this.store.select('todos').subscribe(todos => this.todos = todos);
   }
 
 }
