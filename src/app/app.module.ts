@@ -9,9 +9,9 @@ import { FooterComponent } from './footer/footer.component';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
-import { todoReducer } from './todos/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { appReducers } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     TodosModule,
     // Especificar los estados y sus respectivos reducers
-    StoreModule.forRoot({todos: todoReducer}),
+    StoreModule.forRoot(appReducers),
     // Activar las Redux DevTools para inspección a nivel de desarrollo
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],

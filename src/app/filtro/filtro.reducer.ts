@@ -1,9 +1,10 @@
-import { createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import { filtrosValidos, setFiltro } from './filtro.actions';
 
 export const initialState: filtrosValidos = 'todos';
 
-export const filtroReducer = createReducer(
+// Tengo que especificar el tipo de dato que recibe el reducer, dado que es un tipo personalizado
+export const filtroReducer = createReducer<filtrosValidos, Action>(
   initialState,
-  on(setFiltro, (state, { filtro }) => state),
+  on(setFiltro, (state, { filtro }) => filtro),
 );
