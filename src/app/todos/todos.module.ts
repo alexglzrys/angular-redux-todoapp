@@ -16,6 +16,9 @@ import { TodoPageComponent } from './todo-page/todo-page.component';
     TodoListComponent,
     TodoPageComponent
   ],
+  exports: [
+    TodoPageComponent
+  ],
   imports: [
     CommonModule
   ]
