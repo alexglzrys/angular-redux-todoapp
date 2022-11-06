@@ -1,6 +1,9 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Todo } from '../models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppSate } from '../../app.reducer';
+import { toggle } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -18,7 +21,8 @@ export class TodoItemComponent implements OnInit {
 
   editando: boolean = false;
 
-  constructor() {
+  // Inyectar el Store
+  constructor(private store: Store<AppSate>) {
 
   }
 
@@ -26,6 +30,12 @@ export class TodoItemComponent implements OnInit {
     // Configurar controles de formulario reactivos con base al estado del todo actual
     this.chkCompletado = new FormControl(this.todo.completado);
     this.txtEditInput = new FormControl(this.todo.texto, Validators.required);
+
+    // Reaccionar a los cambios del checkbox para saber si un todo esta o no completado
+    this.chkCompletado.valueChanges.subscribe(newValue => {
+      // Disparar la acción que alterna la propiedad completado de un Todo
+      this.store.dispatch(toggle({id: this.todo.id}));
+    })
   }
 
   editar() {
