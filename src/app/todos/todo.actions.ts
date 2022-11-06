@@ -10,3 +10,5 @@ export const editar = createAction('[Todo] Editar', props<{id: number, texto: st
 export const eliminar = createAction('[Todo] Eliminar', props<{id: number}>());
 // Acción para completar o no completar todos los todos de la lista
 export const toggleAll = createAction('[Todo] Toggle All', props<{status: boolean}>());
+// Acción para limpiar o borrar todas las tareas completadas
+export const limpiarCompletados = createAction('[Todo] Limpiar Tareas Completadas');

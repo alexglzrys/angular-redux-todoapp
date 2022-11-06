@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppSate } from 'src/app/app.reducer';
 import { filtrosValidos } from 'src/app/filtro/filtro.actions';
 import { setFiltro } from '../../filtro/filtro.actions';
+import { limpiarCompletados } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -40,4 +41,8 @@ export class TodoFooterComponent implements OnInit {
     this.store.dispatch(setFiltro({filtro: nuevo_filtro}));
   }
 
+  limpiarTareasCompletadas() {
+    // Despachar acción para borrar todas las tareas completadas
+    this.store.dispatch(limpiarCompletados());
+  }
 }
