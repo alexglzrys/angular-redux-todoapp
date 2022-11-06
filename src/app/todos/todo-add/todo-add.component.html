@@ -1,4 +1,8 @@
 <header class="header">
   <h1>todos</h1>
-  <input class="new-todo" placeholder="¿Qué quieres hacer?" autofocus />
+  <!--
+    Especificar que este input será controlado por los formularios reactivos de Angular
+    Al presionar ENTER se ejecutará el método agregar
+  -->
+  <input class="new-todo" placeholder="¿Qué quieres hacer?" [formControl]="txtInput" (keyup.enter)="agregar()" autofocus />
 </header>

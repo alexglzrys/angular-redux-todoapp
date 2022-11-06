@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { TodosModule } from './todos/todos.module';
@@ -18,6 +20,9 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    // Quizá más adelante el módulo principal haga uso de formularios reactivos,
+    // Por el momento solo el módulo de todos los necesita, es por ello que se debe especificar la importación en el módulo pertinente
+    ReactiveFormsModule,
     TodosModule,
     // Especificar los estados y sus respectivos reducers
     StoreModule.forRoot({todos: todoReducer}),
