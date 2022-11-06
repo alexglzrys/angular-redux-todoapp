@@ -8,3 +8,5 @@ export const toggle = createAction('[Todo] Toggle', props<{id: number}>());
 export const editar = createAction('[Todo] Editar', props<{id: number, texto: string}>());
 // Acción para eliminar un todo
 export const eliminar = createAction('[Todo] Eliminar', props<{id: number}>());
+// Acción para completar o no completar todos los todos de la lista
+export const toggleAll = createAction('[Todo] Toggle All', props<{status: boolean}>());

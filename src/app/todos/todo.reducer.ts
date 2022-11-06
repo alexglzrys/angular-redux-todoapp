@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { crear, toggle, editar, eliminar } from './todo.actions';
+import { crear, toggle, editar, eliminar, toggleAll } from './todo.actions';
 import { Todo } from './models/todo.model';
 
 export const initialState: Todo[] = [];
@@ -31,4 +31,6 @@ export const todoReducer = createReducer(
   }),
   // Borrar el todo seleccionado | Filter nos retorna un nuevo arreglo con los datos que cumplen la condición
   on(eliminar, (state, { id }) => state.filter(todo => todo.id !== id)),
+  // Modificar el status de completado a todos los elementos de la lista, cuidar de no mutar el objeto
+  on(toggleAll, (state, { status }) => state.map(todo => ({...todo, completado: status })))
 );
