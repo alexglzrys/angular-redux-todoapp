@@ -3,7 +3,7 @@ import { Todo } from '../models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppSate } from '../../app.reducer';
-import { editar, toggle } from '../todo.actions';
+import { editar, eliminar, toggle } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -57,6 +57,11 @@ export class TodoItemComponent implements OnInit {
 
     // Despachar la acción para cambiar el texto del todo seleccionado
     this.store.dispatch(editar({id: this.todo.id, texto: this.txtEditInput.value}));
+  }
+
+  eliminarTodo() {
+    // Despachar la acción para eliminar el todo seleccionado
+    this.store.dispatch(eliminar({id: this.todo.id}));
   }
 
 }

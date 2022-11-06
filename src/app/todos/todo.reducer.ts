@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { crear, toggle, editar } from './todo.actions';
+import { crear, toggle, editar, eliminar } from './todo.actions';
 import { Todo } from './models/todo.model';
 
 export const initialState: Todo[] = [];
@@ -29,4 +29,6 @@ export const todoReducer = createReducer(
       return todo;
     })
   }),
+  // Borrar el todo seleccionado | Filter nos retorna un nuevo arreglo con los datos que cumplen la condición
+  on(eliminar, (state, { id }) => state.filter(todo => todo.id !== id)),
 );

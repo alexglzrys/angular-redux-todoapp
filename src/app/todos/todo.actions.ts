@@ -6,3 +6,5 @@ export const crear = createAction('[Todo] Crear', props<{texto: string}>());
 export const toggle = createAction('[Todo] Toggle', props<{id: number}>());
 // Acción para actualizar el titulo de la tarea
 export const editar = createAction('[Todo] Editar', props<{id: number, texto: string}>());
+// Acción para eliminar un todo
+export const eliminar = createAction('[Todo] Eliminar', props<{id: number}>());
