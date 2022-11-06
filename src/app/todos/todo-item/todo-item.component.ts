@@ -3,7 +3,7 @@ import { Todo } from '../models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppSate } from '../../app.reducer';
-import { toggle } from '../todo.actions';
+import { editar, toggle } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -40,6 +40,9 @@ export class TodoItemComponent implements OnInit {
 
   editar() {
     this.editando = true;
+    // Si borramos el contenido de la caja, no se dispara la acción para actualizar el todo, pero el valor almacenado en la caja si (lo perdemos).
+    this.txtEditInput.setValue(this.todo.texto);
+
     setTimeout(() => {
       // Seleccionar el contenido del elemento para una facil edición
       this.inputEdit.nativeElement.select();
@@ -48,6 +51,12 @@ export class TodoItemComponent implements OnInit {
 
   terminarEdicion() {
     this.editando = false;
+    // Validar que el todo sea válido y tenga un titulo diferente al actual para editar
+    if (this.txtEditInput.invalid) return;
+    if (this.txtEditInput.value === this.todo.texto) return;
+
+    // Despachar la acción para cambiar el texto del todo seleccionado
+    this.store.dispatch(editar({id: this.todo.id, texto: this.txtEditInput.value}));
   }
 
 }
